@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <table border="2">
+            <tr>
+                <th></th>
+                    {% for i in xrange %}
+                <th width="20px">{{ forloop.counter  }}</th>
+                {% endfor %}
+            </tr>
+            {% for row in grid %}
+            <tr> 
+                <th height="20px">{{ forloop.counter }}</th>
+                {% for row in grid %}
+                <tr>
+                    <th height="20px">{{ forloop.counter }}</th>
+                    {% for cell in row %}
+                        {% if cell == rcol %}
+                            <td bgcolor="blue"></td>
+                        {% elif cell == rrow %}
+                            <td bgcolor="blue"></td>
+                        {% else %}
+                            <td bgcolor="lightgray"></td>
+                        {% endif %}
+                    {% endfor %}
+            </tr>
+                {% endfor %}
+            {% endfor %}
+        </table>
+
+
+    </body>
+</html>
