@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest&display=swap');
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -31,6 +34,10 @@ body {
     transition: all 0.1s ease-in;
 }
 
-/* .cell.random {
-    background-color: green;
-} */
+.message-container {
+    margin-top: 20px;
+    font-family: 'Onest', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #131518;
+}

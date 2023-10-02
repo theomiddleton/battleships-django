@@ -26,7 +26,7 @@ def grid_view(request):
     return HttpResponse(template.render(context, request))
 
 def clicked_view(request, row, column, is_random_int):
-    print(row, column, is_random_int)
+    print(row, column, 'true' if is_random_int else 'false')
     if is_random_int:
         return HttpResponse(f'You clicked on cell ({row}, {column}), which was the random.')
     else:
