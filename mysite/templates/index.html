@@ -1,36 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <table border="2">
-            <tr>
-                <th></th>
-                    {% for i in xrange %}
-                <th width="20px">{{ forloop.counter  }}</th>
-                {% endfor %}
-            </tr>
-            {% for row in grid %}
-            <tr> 
-                <th height="20px">{{ forloop.counter }}</th>
-                {% for row in grid %}
-                <tr>
-                    <th height="20px">{{ forloop.counter }}</th>
-                    {% for cell in row %}
-                        {% if cell == rcol %}
-                            <td bgcolor="blue"></td>
-                        {% elif cell == rrow %}
-                            <td bgcolor="blue"></td>
-                        {% else %}
-                            <td bgcolor="lightgray"></td>
-                        {% endif %}
-                    {% endfor %}
-            </tr>
-                {% endfor %}
-            {% endfor %}
-        </table>
+<table border="1">
+  <thead>
+    <tr>
+      <th></th>
+      {% for col in cols %}
+        <th>{{ col }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in rows %}
+      <tr>
+        <th>{{ row }}</th>
+        {% for col in cols %}
+          <td style="background-color: blue;" onclick="sendData({{ row }}, {{ forloop.counter0 }})"></td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
+<script>
+  function sendData(row, col) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/handle_data/', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log()
+        console.log(xhr.responseText);
+      }
+    };
+    xhr.send(JSON.stringify({ row: row, col: col }));
+  }
 
-    </body>
-</html>
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+</script>
