@@ -5,9 +5,10 @@ import random as rng
 
 def grid_view(request):
     cells = []
-    for row in range(5):
+    xrange = range(5)
+    for row in xrange:
         rowCells = []
-        for col in range(5):
+        for col in xrange:
             rowCells.append((row, col))
         cells.append(rowCells)
         randCell = rng.choice(cells[0])
@@ -23,10 +24,6 @@ def grid_view(request):
     template = loader.get_template('game/grid.html')
 
     return HttpResponse(template.render(context, request))
-
-rrow = rng.randint(0, 5)
-rcol = rng.randint(0, 5)
-
 
 def clicked_view(request, row, column, is_random_int):
     print(row, column, is_random_int)
