@@ -14,12 +14,11 @@
         {% for row in xrange %}
             <div class="row">
                 {% for column in xrange %}
-                    <div class="cell" id="cell_{{ row }}_{{ column }}"></div>
+                <div class="cell{% if row == randRow and column == randCol %} random{% endif %}" id="cell_{{ row }}_{{ column }}"></div>
                 {% endfor %}
             </div>
         {% endfor %}
     </div>
     <script src="{% static 'game/script.js' %}"></script>
-
 </body>
 </html>

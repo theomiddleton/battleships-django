@@ -23,8 +23,14 @@ body {
     border: 1px solid black;
     background-color: blue;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
-.cell.random {
-    background-color: green;
+.cell:hover {
+    background-color: lightblue;
+    transition: all 0.1s ease-in;
 }
+
+/* .cell.random {
+    background-color: green;
+} */
