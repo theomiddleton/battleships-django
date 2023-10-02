@@ -24,3 +24,7 @@ body {
     background-color: blue;
     cursor: pointer;
 }
+
+.cell.random {
+    background-color: green;
+}
