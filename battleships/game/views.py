@@ -14,7 +14,7 @@ def grid_view(request):
         randCell = rng.choice(cells[0])
         
     context = {
-        'xrange': range(5),
+        'xrange': xrange,
         'cells': cells,
         'randCell': randCell,
         'randRow': rng.randint(0, 4),
