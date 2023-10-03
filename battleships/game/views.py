@@ -23,13 +23,8 @@ def grid_view(request):
     num_columns = len(cells[0])
 
     print('num_rows', num_rows, 'num_columns', num_columns)
-            
-    randomRows = rng.sample(range(num_rows), 5)
-    randomColumns = rng.sample(range(num_columns), 5)
-        
+     
     print('randomCells', randomCells)
-    print('randomRows', randomRows)  
-    print('randomColumns', randomColumns)  
     
     context = {
         'xrange': xrange,
@@ -43,6 +38,6 @@ def grid_view(request):
 def clicked_view(request, row, column, is_random_int):
     print(row, column, 'true' if is_random_int else 'false')
     if is_random_int:
-        return HttpResponse(f'You clicked on cell ({row}, {column}), which was the random.')
+        return HttpResponse(f'You clicked on cell ({row}, {column}), which was a ship.')
     else:
-        return HttpResponse(f'You clicked on cell ({row}, {column}), which was not the random.')
+        return HttpResponse(f'You clicked on cell ({row}, {column}), which was not a ship.')
