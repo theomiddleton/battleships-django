@@ -11,14 +11,24 @@ def grid_view(request):
         for col in xrange:
             rowCells.append((row, col))
         cells.append(rowCells)
-        randCell = rng.choice(cells[0])
+
+    randomCells = []
+    while len(randomCells) < 3:
+        randRow = rng.randint(0, 4)
+        randCol = rng.randint(0, 4)
+        if (randRow, randCol) not in randomCells:
+            randomCells.append((randRow, randCol))
+            
+        randomRows = rng.randint(0, 4)
+        randomColumns = rng.randint(0, 4)    
         
     context = {
         'xrange': xrange,
         'cells': cells,
-        'randCell': randCell,
-        'randRow': rng.randint(0, 4),
-        'randCol': rng.randint(0, 4),
+        'randRow': randRow,
+        'randCol': randCol,
+        'randomColumns': randomColumns,
+        'randomRows': randomRows
     }   
   
     template = loader.get_template('game/grid.html')

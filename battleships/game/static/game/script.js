@@ -6,14 +6,19 @@ let foundRandomCells = 0;
 function showRestartButton() {
     const foundRandomCells = document.querySelectorAll('.random.found');
     if (foundRandomCells.length === randomCells.length) {
-        if (restartButton) {
-            restartButton.style.display = 'block';
-        }
+        restartButton.style.display = 'block';
     } else {
-        if (restartButton) {
-            restartButton.style.display = 'none';
-        }
+        restartButton.style.display = 'none';
     }
+}
+
+function resetGame() {
+    cells.forEach(cell => {
+        cell.style.backgroundColor = '';
+        cell.classList.remove('found');
+    });
+    foundRandomCells = 0;
+    showRestartButton();
 }
 
 cells.forEach(cell => {
@@ -44,3 +49,5 @@ cells.forEach(cell => {
             });
     });
 });
+
+restartButton.addEventListener('click', resetGame);
