@@ -33,11 +33,6 @@ def grid_view(request):
     
     context = {
         'xrange': xrange,
-        'cells': cells,
-        'randRow': randRow,
-        'randCol': randCol,
-        'randomRows': randomRows,
-        'randomColumns': randomColumns,
         'randomCells': randomCells, 
     }   
   
