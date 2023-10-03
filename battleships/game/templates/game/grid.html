@@ -13,10 +13,13 @@
     <div class="grid">
         {% for row in xrange %}
             <div class="row">
-                {% for column in xrange %}
-                    {% with coords=row|add:","|add:column %}
-                        <div class="cell{% if coords in randomCells %} random{% endif %}" id="cell_{{ row }}_{{ column }}"></div>
-                    {% endwith %}
+                {% for column in xrange %}           
+                    <div class="cell{% if (row, column) in randomCells %} random{% endif %}" id="cell_{{ row }}_{{ column }}"></div> 
+                    <script>
+                        console.log('here');
+                        console.log("{{ row }}", "{{ column }}");
+                    </script>
+
                 {% endfor %}
             </div>
         {% endfor %}

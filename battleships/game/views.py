@@ -38,6 +38,7 @@ def grid_view(request):
         'randCol': randCol,
         'randomRows': randomRows,
         'randomColumns': randomColumns,
+        'randomCells': randomCells, 
     }   
   
     template = loader.get_template('game/grid.html')
