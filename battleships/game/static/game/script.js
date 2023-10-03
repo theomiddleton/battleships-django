@@ -18,9 +18,13 @@ function resetGame() {
         cell.classList.remove('found');
     });
     foundRandomCells = 0;
+    hits = 0;
+    const message = document.getElementById('message');
+    message.textContent = ''; // hide message
     showRestartButton();
 }
 
+let hits = 0; // initialize hits variable outside of forEach loop
 cells.forEach(cell => {
     cell.addEventListener('click', function() {
         if (foundRandomCells === randomCells.length) {
@@ -39,7 +43,8 @@ cells.forEach(cell => {
                 if (is_random) {
                     this.style.backgroundColor = 'green';
                     const message = document.getElementById('message');
-                    message.textContent = 'You hit a ship!';
+                    hits++; // increment hits variable
+                    message.textContent = 'You hit a ship! Total hits: ' + hits;
                     this.classList.add('found');
                     foundRandomCells++;
                     showRestartButton();
@@ -49,5 +54,4 @@ cells.forEach(cell => {
             });
     });
 });
-
 restartButton.addEventListener('click', resetGame);
