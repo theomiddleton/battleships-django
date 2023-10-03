@@ -23,13 +23,9 @@ function resetGame() {
 
 cells.forEach(cell => {
     cell.addEventListener('click', function() {
-        // this breaks it all for some reason
-        //it checks if the number of random cells found is equal to the number of random cells
-        //if it is, it returns, and stops all code from running
-        //this is bad
-        //if (foundRandomCells === randomCells.length) {
-        //    return;
-        //}
+        if (foundRandomCells === randomCells.length) {
+            return;
+        }
         const idParts = this.id.split('_');
         const row = idParts[1];
         const column = idParts[2];

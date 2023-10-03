@@ -13,16 +13,13 @@
     <div class="grid">
         {% for row in xrange %}
             <div class="row">
-                {% for column in xrange %}           
-                    <div class="cell{% if (row, column) in randomCells %} random{% endif %}" id="cell_{{ row }}_{{ column }}"></div> 
-                    <script>
-                        console.log('here');
-                        console.log("{{ row }}", "{{ column }}");
-                    </script>
-
+                {% for column in xrange %}
+                        <div class="cell{% for i in randomCells %}{% if i.0 == row and i.1 == column %} random{% endif %}{% endfor %}" id="cell_{{ row }}_{{ column }}"></div>
+                    {% comment %} that one line took me like 4 hours {% endcomment %}
                 {% endfor %}
             </div>
         {% endfor %}
+
     </div>
     <div class="message-container">
         <div id="message"></div>
