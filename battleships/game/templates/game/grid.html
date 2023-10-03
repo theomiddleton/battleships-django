@@ -15,7 +15,7 @@
             <div class="row">
                 {% for column in xrange %}
                     {% with row=row column=column %}
-                        <div class="cell{% if row in randomRows and column in randomColumns %} random{% endif %}" id="cell_{{ row }}_{{ column }}"></div>
+                        <div class="cell {% if row in randomRows and column in randomColumns %} random{% endif %}" id="cell_{{ row }}_{{ column }}"></div>
                     {% endwith %}
                 {% endfor %}
             </div>

@@ -19,16 +19,25 @@ def grid_view(request):
         if (randRow, randCol) not in randomCells:
             randomCells.append((randRow, randCol))
             
-        randomRows = rng.randint(0, 4)
-        randomColumns = rng.randint(0, 4)    
+    num_rows = len(cells)
+    num_columns = len(cells[0])
+
+    print('num_rows', num_rows, 'num_columns', num_columns)
+            
+    randomRows = rng.sample(range(num_rows), 5)
+    randomColumns = rng.sample(range(num_columns), 5)
         
+    print('randomCells', randomCells)
+    print('randomRows', randomRows)  
+    print('randomColumns', randomColumns)  
+    
     context = {
         'xrange': xrange,
         'cells': cells,
         'randRow': randRow,
         'randCol': randCol,
+        'randomRows': randomRows,
         'randomColumns': randomColumns,
-        'randomRows': randomRows
     }   
   
     template = loader.get_template('game/grid.html')
