@@ -1,6 +1,7 @@
 const restartButton = document.getElementById('restart-button');
 const cells = document.querySelectorAll('.cell');
 const randomCells = document.querySelectorAll('.random');
+const showShipsButton = document.getElementById('show-ships-button');
 let foundRandomCells = 0;
 
 function showRestartButton() {
@@ -9,6 +10,23 @@ function showRestartButton() {
         restartButton.style.display = 'block';
     } else {
         restartButton.style.display = 'none';
+    }
+}
+
+let shown = false;
+function showShips() {
+    if (shown === false) {
+        randomCells.forEach(cell => {
+            cell.style.backgroundColor = 'lightblue';
+        });
+        showShipsButton.textContent = 'Hide Ships';
+        shown = true;
+    } else {
+        randomCells.forEach(cell => {
+            cell.style.backgroundColor = '';
+        });
+        showShipsButton.textContent = 'Show Ships';
+        shown = false;
     }
 }
 
@@ -55,3 +73,4 @@ cells.forEach(cell => {
     });
 });
 restartButton.addEventListener('click', resetGame);
+showShipsButton.addEventListener('click', showShips);

@@ -10,12 +10,19 @@
     <link rel="stylesheet" href="{% static 'game/style.css' %}">
 </head>
 <body>
+    <div class="header">
+        <h1>Grid</h1>
+        <div class="score-container">
+            <div class="score">Score: <span id="score">0</span></div>
+            <div class="best">Best: <span id="best">0</span></div>
+            <button class="btn" id="show-ships-button">Show</button>
+        </div>
+    </div>
     <div class="grid">
         {% for row in xrange %}
             <div class="row">
                 {% for column in xrange %}
                         <div class="cell{% for i in randomCells %}{% if i.0 == row and i.1 == column %} random{% endif %}{% endfor %}" id="cell_{{ row }}_{{ column }}"></div>
-                    {% comment %} that one line took me like 4 hours {% endcomment %}
                 {% endfor %}
             </div>
         {% endfor %}

@@ -22,7 +22,7 @@ def grid_view(request):
     num_rows = len(cells)
     num_columns = len(cells[0])
 
-    print('num_rows', num_rows, 'num_columns', num_columns)
+    print(num_rows, 'rows', num_columns, 'columns')
      
     print('randomCells', randomCells)
     
@@ -30,14 +30,24 @@ def grid_view(request):
         'xrange': xrange,
         'randomCells': randomCells, 
     }   
-  
+    
     template = loader.get_template('game/grid.html')
 
     return HttpResponse(template.render(context, request))
 
 def clicked_view(request, row, column, is_random_int):
     print(row, column, 'true' if is_random_int else 'false')
+
+    #score does not work. i think this line below assigns score to 0 every single time
+    score = int(request.GET.get('score', 0))
     if is_random_int:
-        return HttpResponse(f'You clicked on cell ({row}, {column}), which was a ship.')
+        score = score + 1
     else:
-        return HttpResponse(f'You clicked on cell ({row}, {column}), which was not a ship.')
+        score = score - 1
+    print('score', score)
+    if is_random_int:
+        message = f'You clicked on cell ({row}, {column}), which was a ship.'
+    else:
+        message = f'You clicked on cell ({row}, {column}), which was not a ship.'
+    return HttpResponse(message + f'?score={score}') 
+
