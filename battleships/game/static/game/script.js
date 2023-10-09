@@ -2,7 +2,20 @@ const restartButton = document.getElementById('restart-button');
 const cells = document.querySelectorAll('.cell');
 const randomCells = document.querySelectorAll('.random');
 const showShipsButton = document.getElementById('show-ships-button');
+const resetScoreButton = document.getElementById('score-reset');
 let foundRandomCells = 0;
+
+function resetScore() {
+    fetch('/reset-score/')
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
+            console.log('Score has been reset!');
+            const message = document.getElementById('message');
+            message.textContent = 'Score has been reset!';
+        });
+}
+
 
 function showRestartButton() {
     const foundRandomCells = document.querySelectorAll('.random.found');
@@ -74,3 +87,5 @@ cells.forEach(cell => {
 });
 restartButton.addEventListener('click', resetGame);
 showShipsButton.addEventListener('click', showShips);
+resetScoreButton.addEventListener('click', resetScore);
+

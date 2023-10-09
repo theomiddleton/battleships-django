@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Highscores</title>
+</head>
+<body>
+    <h1>Highscores</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for highscore in highscores %}
+            <tr>
+                <td>{{ highscore.name }}</td>
+                <td>{{ highscore.score }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
