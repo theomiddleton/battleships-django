@@ -1,0 +1,14 @@
+{
+    "builds": [
+      {
+        "src": "battleships/wsgi.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "battleships/wsgi.py"
+      }
+    ]
+}
