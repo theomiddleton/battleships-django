@@ -1,14 +1,27 @@
 {
-    "builds": [
-      {
-        "src": "battleships/wsgi.py",
-        "use": "@vercel/python"
+  "version": 2,
+  "builds": [
+    {
+      "src": "battleships/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    },
+    {
+      "src": "build_files.sh",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "staticfiles_build"
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "battleships/wsgi.py"
-      }
-    ]
+    }
+  ],
+  "routes": [
+    {
+      "src": "game/static/game(.*)",
+      "dest": "game/static/game/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "battleships/wsgi.py"
+    }
+  ]
 }
