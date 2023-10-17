@@ -123,6 +123,8 @@ USE_TZ = True
 
 STATIC_URL = "game/static/"
 
+STATIC_ROOT = '/home/app/battleships/static/game/static'
+
 STATICFILES_DIRS = [BASE_DIR / "game/static"]
 
 # Default primary key field type
