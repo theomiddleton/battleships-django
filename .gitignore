@@ -12,4 +12,8 @@ media
 *.pyc
 battleships/old.db.sqlite3
 battleships/.env
+
 battleships/battleships/.env
+
+battleships/battleships/.env
+
