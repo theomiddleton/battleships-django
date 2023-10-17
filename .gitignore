@@ -16,4 +16,6 @@ battleships/.env
 battleships/battleships/.env
 .vercel
 
-
+/env
+*.env
+.vscode
