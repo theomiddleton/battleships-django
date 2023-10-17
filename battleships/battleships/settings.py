@@ -28,7 +28,7 @@ SECRET_KEY = "django-insecure-4)p1auctjyb+o)20q%mu&g8ji^&!@ijh@*9zjz46axl8kxuq-1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
 
 
 # Application definition
@@ -78,13 +78,15 @@ WSGI_APPLICATION = "battleships.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# To use Neon with Django, you have to create a Project on Neon and specify the project connection settings in your settings.py in the same way as for standalone Postgres.
 DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': os.environ.get('DB_NAME'),
+    'USER': os.environ.get('DB_USER'),
+    'PASSWORD': os.environ.get('DB_PASSWORD'),
     'HOST': os.environ.get('DB_HOST'),
     'PORT': os.environ.get('DB_PORT'),
-    'USER': os.environ.get('DB_USER'),
     'OPTIONS': {'sslmode': 'require'},
   }
 }
