@@ -80,11 +80,19 @@ WSGI_APPLICATION = "battleships.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 # To use Neon with Django, you have to create a Project on Neon and specify the project connection settings in your settings.py in the same way as for standalone Postgres.
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'DATABASE_URL': os.environ.get('DATABASE_URL'),
+#    }
+#}
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'DATABASE_URL': os.environ.get('DATABASE_URL'),
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
 
 # Password validation
