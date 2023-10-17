@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+<head>
+    <title>Highscores</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'game/score.css' %}">
+</head>
+<body>
+    <h1>Highscores</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for highscore in highscores %}
+            <tr>
+                <td>{{ highscore.name }}</td>
+                <td>{{ highscore.score }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

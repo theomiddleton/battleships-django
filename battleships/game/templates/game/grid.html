@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <link rel="stylesheet" href="{% static 'game/style.css' %}">
+</head>
+<body>
+    <div class="header">
+        <h1>Grid</h1>
+        <div class="score-container">
+            <div class="score">Last Game Score: <span id="score">{{ score }}</span></div>
+            <div class="best">Best: <span id="best">0</span></div>
+            <button class="btn" id="score-reset">Reset</button>
+            <button class="btn" id="show-ships-button">Show</button>
+        </div>
+    </div>
+    <div class="grid">
+        {% for row in xrange %}
+            <div class="row">
+                {% for column in xrange %}
+                        <div class="cell{% for i in randomCells %}{% if i.0 == row and i.1 == column %} random{% endif %}{% endfor %}" id="cell_{{ row }}_{{ column }}"></div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+    </div>
+    <div class="message-container">
+        <div id="message"></div>
+        <button class="btn" id="restart-button" style="display: none;">Restart</button>
+    </div>
+    <script src="{% static 'game/script.js' %}"></script>
+</body>
+</html>

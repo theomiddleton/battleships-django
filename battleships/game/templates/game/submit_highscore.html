@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'game/score.css' %}">
+    <title>Submit Highscore</title>
+</head>
+<body>
+    <h1>Submit Highscore</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn" type="submit">Submit</button>
+    </form>
+</body>
+</html>
