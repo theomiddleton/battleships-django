@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 import environ
 from pathlib import Path
+import dj_database_url
 
 env = environ.Env()
 environ.Env.read_env()
@@ -27,7 +28,7 @@ SECRET_KEY = "django-insecure-4)p1auctjyb+o)20q%mu&g8ji^&!@ijh@*9zjz46axl8kxuq-1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -79,13 +80,12 @@ WSGI_APPLICATION = "battleships.wsgi.application"
 
 DATABASES = {
   'default': {
-    'ENGINE': 'django_psdb_engine',
+    'ENGINE': 'django.db.backends.postgresql',
     'NAME': os.environ.get('DB_NAME'),
     'HOST': os.environ.get('DB_HOST'),
     'PORT': os.environ.get('DB_PORT'),
     'USER': os.environ.get('DB_USER'),
-    'PASSWORD': os.environ.get('DB_PASSWORD'),
-    'OPTIONS': {'ssl': {'ca': os.environ.get('MYSQL_ATTR_SSL_CA')}}
+    'OPTIONS': {'sslmode': 'require'},
   }
 }
 
@@ -123,9 +123,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "/static/"
+STATIC_URL = "game/static/"
 
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [BASE_DIR / "game/static"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
