@@ -123,7 +123,7 @@ USE_TZ = True
 
 STATIC_URL = "game/static/"
 
-STATIC_ROOT = '/home/app/battleships/static/game/static'
+STATIC_ROOT = '/home/app/battleships/code/game/static/game'
 
 STATICFILES_DIRS = [BASE_DIR / "game/static"]
 
