@@ -1,5 +1,6 @@
 {
-    "version": 2,
+    "name": "battleships",
+    "alias": "battleships-theomiddleton.vercel.app",
     "builds": [
         {
             "src": "battleships/wsgi.py",
