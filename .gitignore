@@ -19,3 +19,4 @@ battleships/battleships/.env
 /env
 *.env
 .vscode
+env/
