@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('Django_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', '.applikuapp.com']
+ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'theomiddleton.me', 'www.theomiddleton.me', 'sch.theomiddleton.me']
 
 
 # Application definition
